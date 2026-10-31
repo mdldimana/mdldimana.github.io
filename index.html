@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Merlin Dimana, fondateur de MdlSoft à Kinshasa : applications web, logiciels de gestion, pubs vidéo et produits numériques.">
+<meta property="og:title" content="Merlin Dimana · MdlSoft">
+<meta property="og:description" content="Applications web, logiciels de gestion, pubs vidéo et produits numériques, à Kinshasa.">
+<meta property="og:image" content="merlin.jpg">
+<link rel="icon" href="mdlsoft-logo.jpg">
+<title>Merlin Dimana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : façon « deck » rouge et noir — chaque section est un écran plein large ; titre géant derrière le portrait, gros chiffres rouges pour le process */
+:root{
+  --ink:#070505;
+  --ink-2:#120B0B;
+  --line:#2A1716;
+  --cream:#F6EEEA;
+  --muted:#A99490;
+  --red:#E3140F;
+  --red-deep:#7A0A08;
+  --orange:#FF6B1F;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:.95;text-wrap:balance}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #fff3;box-shadow:0 10px 30px -10px var(--red);transition:transform .2s, background .2s}
+.pill:hover{transform:translateY(-2px);background:#ff2a1f}
+.pill.ghost{background:transparent;border-color:var(--line);box-shadow:none}
+.pill.ghost:hover{background:var(--ink-2)}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--ink)}
+nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:9;background:color-mix(in srgb,var(--ink) 80%,transparent);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-size:18px}
+.logo i{width:30px;height:16px;border-radius:999px;border:2px solid var(--red);position:relative}
+.logo i::after{content:"";position:absolute;right:2px;top:2px;width:8px;height:8px;border-radius:50%;background:var(--red)}
+nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;align-items:center}
+nav ul a{text-decoration:none;font-size:14px;color:var(--muted)}
+nav ul a:hover{color:var(--cream)}
+nav ul a.pill{color:#fff;padding:8px 16px;font-size:13px}
+@media (max-width:700px){nav ul li:not(:last-child){display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(60% 70% at 50% 60%, #ff3b14 0%, var(--red) 30%, var(--red-deep) 70%, var(--ink) 100%)}
+.hero .wrap{position:relative;min-height:min(760px, 92vh);padding-block:30px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:end}
+.giant{position:absolute;inset:auto 0 46%;text-align:center;font-family:var(--display);font-size:clamp(70px,17vw,230px);line-height:.8;letter-spacing:-.03em;color:#fff;opacity:.95;white-space:nowrap;pointer-events:none;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.giant span{color:var(--ink)}
+.photo{grid-column:2;grid-row:1;position:relative;z-index:2;width:min(470px, 62vw);animation:rise 1s .1s cubic-bezier(.2,.8,.2,1) both}
+.photo img{display:block;width:100%;height:auto;max-width:100%;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));
+  -webkit-mask-image:linear-gradient(#000 82%, transparent);mask-image:linear-gradient(#000 82%, transparent)}
+.side{position:relative;z-index:3;padding-bottom:70px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.side.l{grid-column:1;grid-row:1}
+.side.r{grid-column:3;grid-row:1;align-items:end;text-align:right}
+.side h2{font-size:clamp(22px,2.6vw,34px);line-height:1}
+.side h2 b{color:#fff;font-weight:400;display:block}
+.roles{display:flex;gap:18px;flex-wrap:wrap}
+.roles div{display:flex;flex-direction:column;font-size:12px;line-height:1.3;color:#fff;font-weight:600}
+.roles div::after{content:"→";color:#fff;font-size:18px;margin-top:4px}
+.name-sm{font-family:var(--mono);font-size:12px;color:#fff;letter-spacing:.1em}
+.name-big{font-family:var(--display);font-size:clamp(26px,3.2vw,44px);line-height:.95;color:#fff}
+.stamp{display:flex;gap:16px;color:#fff;font-size:12px;font-weight:700}
+.stamp b{color:var(--ink);font-family:var(--display);font-weight:400}
+.chip{position:absolute;z-index:3;background:var(--ink);color:#fff;font-family:var(--mono);font-size:12px;font-weight:500;padding:9px 13px;border-radius:12px;border:1px solid #ffffff22;box-shadow:0 12px 26px -8px #000;animation:float 5s ease-in-out infinite}
+.chip b{display:inline-block;width:20px;height:20px;border-radius:6px;margin-right:8px;vertical-align:-5px;background:var(--red);color:#fff;text-align:center;font-family:var(--display);font-size:11px;line-height:20px}
+.c1{left:32%;top:46%}.c2{right:30%;top:34%;animation-delay:-1.5s}.c3{right:27%;bottom:20%;animation-delay:-3s}.c4{left:30%;bottom:12%;animation-delay:-2.2s}
+@keyframes float{50%{transform:translateY(-12px) rotate(-2deg)}}
+@keyframes rise{from{transform:translateY(40px);opacity:0}}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-block:24px 30px;justify-items:center}
+  .photo{grid-column:1;grid-row:1;width:min(360px,80vw)}
+  .giant{inset:150px 0 auto}
+  .side.l,.side.r{grid-column:1;padding-bottom:0;align-items:center;text-align:center}
+  .side.l{grid-row:2}.side.r{grid-row:3;margin-top:18px}
+  .roles{justify-content:center}
+  .c1{left:4%;top:38%}.c2{right:4%;top:20%}.c3{right:6%;top:55%;bottom:auto}.c4{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* about */
+.about{padding-block:100px;background:linear-gradient(var(--ink),var(--ink-2))}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about h2,.sec-title{font-size:clamp(44px,7vw,92px);color:var(--red);letter-spacing:-.02em}
+.about .txt{min-width:0}
+.about p{color:var(--muted);font-size:17px;margin:22px 0 0;max-width:34em}
+.about p strong{color:var(--cream)}
+.skills{display:flex;flex-direction:column;gap:16px;background:var(--ink);border:1px solid var(--line);border-radius:20px;padding:26px;min-width:0}
+.skill{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.skill span{font-weight:600;font-size:15px}
+.skill em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--red-deep),var(--red),var(--orange))}
+.stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px;border-top:1px solid var(--line)}
+.stats div{padding:26px 10px 0;display:flex;flex-direction:column;gap:4px;text-align:center}
+.stats b{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,64px);color:var(--red);line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr;row-gap:20px}}
+
+/* statement */
+.statement{background:var(--ink);padding-block:110px;text-align:center;position:relative;overflow:hidden}
+.statement::before{content:"";position:absolute;inset:auto 10% -60%;height:120%;background:radial-gradient(closest-side, #e3140f55, transparent);pointer-events:none}
+.statement .wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:22px}
+.statement h2{font-size:clamp(32px,5.6vw,72px);letter-spacing:-.01em;max-width:15em}
+.statement h2 span{color:var(--red);display:block}
+.statement p{color:var(--muted);max-width:36em;margin:0;font-size:17px}
+
+/* projects */
+.work{padding-block:100px;background:var(--ink-2)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.head p{color:var(--muted);max-width:28em;margin:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{font:600 14px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--cream)}
+.filters button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.card{grid-column:span 3;background:var(--ink);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:border-color .25s, transform .25s}
+.card:hover{border-color:var(--red);transform:translateY(-3px)}
+.card.wide{grid-column:span 6}
+.visual{position:relative;aspect-ratio:16/9;max-width:100%;background:radial-gradient(80% 90% at 50% 100%, #3a0906, #0d0606);border-bottom:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.card.wide .visual{aspect-ratio:21/8}
+.body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.body h3{font-size:26px}
+.body p{margin:0;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tags span{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:6px;background:var(--ink-2);border:1px solid var(--line);color:var(--muted)}
+.link{color:var(--red);font-weight:700;font-size:14px;text-decoration:none}
+.link:hover{text-decoration:underline}
+@media (max-width:640px){.grid{grid-template-columns:1fr}.card,.card.wide{grid-column:auto}.card.wide .visual{aspect-ratio:16/9}}
+
+/* card visuals */
+.v-invite{display:flex;gap:22px;align-items:center}
+.inv{width:150px;aspect-ratio:3/4;border-radius:10px;background:linear-gradient(160deg,#F6EEEA,#E8D6C6);color:#2A1A12;padding:16px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;box-shadow:0 20px 40px -12px #000;transform:rotate(-5deg)}
+.inv small{font-family:var(--mono);font-size:8px;letter-spacing:.2em}
+.inv b{font-family:var(--display);font-weight:400;font-size:18px;line-height:1}
+.qr{width:44px;height:44px;margin-top:6px;background:conic-gradient(#2A1A12 0 25%,transparent 0 50%,#2A1A12 0 75%,transparent 0) 0 0/11px 11px;outline:3px solid #2A1A12}
+.guest{display:flex;flex-direction:column;gap:8px;min-width:150px}
+.guest div{display:flex;justify-content:space-between;gap:14px;font-size:12px;background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.ok{color:#3DDC84}.wait{color:var(--orange)}
+@media (max-width:640px){.guest{display:none}}
+.ticket{display:flex;width:min(82%,340px);height:120px;border-radius:14px;background:var(--red);color:#fff;overflow:hidden;box-shadow:0 20px 40px -14px var(--red)}
+.ticket .l{flex:1;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between}
+.ticket .l b{font-family:var(--display);font-weight:400;font-size:22px;line-height:1}
+.ticket .l small{font-family:var(--mono);font-size:10px}
+.ticket .r{width:110px;border-left:2px dashed var(--ink);display:grid;place-items:center;background:var(--cream)}
+.ticket .r i{width:62px;height:62px;background:conic-gradient(var(--ink) 0 25%,transparent 0 50%,var(--ink) 0 75%,transparent 0) 0 0/10px 10px;outline:4px solid var(--ink)}
+.pay{position:absolute;bottom:12px;left:12px;right:12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pay span{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:999px;background:var(--ink);border:1px solid var(--line);color:var(--cream)}
+.erp{width:92%;height:78%;display:grid;grid-template-columns:120px 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--ink)}
+.erp aside{background:var(--ink-2);padding:12px;display:flex;flex-direction:column;gap:7px;border-right:1px solid var(--line)}
+.erp aside i{height:8px;border-radius:4px;background:var(--line)}
+.erp aside i:nth-child(2){background:var(--red)}
+.erp main{padding:14px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto 1fr;gap:10px}
+.kpi{background:var(--ink-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column}
+.kpi small{font-family:var(--mono);font-size:9px;color:var(--muted)}
+.kpi b{font-family:var(--display);font-weight:400;font-size:16px;font-variant-numeric:tabular-nums}
+.bars{grid-column:span 4;display:flex;align-items:end;gap:8px;padding:10px;background:var(--ink-2);border:1px solid var(--line);border-radius:8px}
+.bars i{flex:1;background:linear-gradient(var(--orange),var(--red));border-radius:4px 4px 0 0}
+@media (max-width:640px){.erp{grid-template-columns:1fr}.erp aside{display:none}.erp main{grid-template-columns:repeat(2,1fr)}.erp .kpi:nth-child(n+3){display:none}.bars{grid-column:span 2}}
+.media{background:#000}
+.media video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.card.wide .media.land{aspect-ratio:16/9}
+.media.port{aspect-ratio:16/9}
+.mdl{display:flex;align-items:center;gap:16px;margin-top:26px;padding:14px 18px 14px 14px;background:#fff;border-radius:16px;width:fit-content;max-width:100%}
+.mdl img{width:64px;height:auto;flex:none}
+.mdl span{font-size:13px;color:#33415c;line-height:1.35}
+.mdl b{display:block;color:#0B2A5B;font-size:15px}
+.flogo{display:inline-flex;align-items:center;gap:10px}
+.flogo img{width:30px;height:30px;border-radius:7px;background:#fff;object-fit:contain;padding:2px}
+.fret{width:90%;display:flex;flex-direction:column;gap:18px}
+.route{display:flex;align-items:center;gap:14px}
+.route b{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,34px);line-height:1}
+.route small{display:block;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.route .path{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--red) 0 8px,transparent 8px 14px);position:relative}
+.route .path::after{content:"✈";position:absolute;left:62%;top:50%;transform:translate(-50%,-55%);color:var(--cream);font-size:20px;background:#200807;padding:0 6px}
+.track-steps{display:flex;gap:8px;flex-wrap:wrap}
+.track-steps span{font-family:var(--mono);font-size:10px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--ink)}
+.track-steps span.on{border-color:var(--red);color:var(--cream)}
+.track-steps span.now{background:var(--red);border-color:var(--red);color:#fff}
+.vid{width:86%;display:flex;flex-direction:column;gap:10px}
+.screen{aspect-ratio:16/9;border-radius:10px;background:radial-gradient(circle at 30% 40%, var(--orange), var(--red) 45%, #2A0606);display:grid;place-items:center}
+.screen::after{content:"";width:0;height:0;border-left:22px solid #fff;border-block:14px solid transparent;margin-left:6px}
+.screen.cp{background:radial-gradient(circle at 25% 30%, #FF3FA4, #8A1BB8 50%, #1E0730)}
+.screen.dp{background:radial-gradient(circle at 70% 60%, #18C1E8, #0B5D8F 50%, #061B2E)}
+.screen.alt{background:radial-gradient(circle at 70% 40%, #2B4FA8, #13224C 55%, #090E1E)}
+.tl{display:flex;gap:3px;height:16px}
+.tl i{flex:1;border-radius:3px;background:var(--line)}
+.tl i:nth-child(3n){background:var(--red)}
+.time{font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
+.book{width:42%;max-width:150px;aspect-ratio:3/4;border-radius:4px 10px 10px 4px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 8px 0 0 rgba(0,0,0,.18),0 18px 34px -12px #000}
+.book b{font-family:var(--display);font-weight:400;font-size:14px;line-height:1.05}
+.book small{font-family:var(--mono);font-size:9px;letter-spacing:.12em}
+.b1{background:#F6D35B;color:#2A1A12}.b1 .paw{font-size:40px;line-height:1;align-self:center}
+.b2{background:#2F6B3A;color:#F6EEEA}
+
+/* process */
+.process{padding-block:100px;background:var(--ink)}
+.process .intro{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;margin-bottom:46px}
+.process .intro p{color:var(--muted);margin:0;max-width:34em}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.steps li{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:26px;padding:16px 26px 16px 18px;border-radius:14px;background:linear-gradient(90deg, transparent 0 9%, var(--red-deep) 22%, var(--red) 100%);min-width:0}
+.steps .n{font-family:var(--display);font-size:clamp(56px,8vw,104px);line-height:.85;color:var(--red);min-width:1.5em;font-variant-numeric:tabular-nums}
+.steps .t{min-width:0}
+.steps .t span{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:#fff;font-weight:500}
+.steps .t p{margin:4px 0 0;color:#fff;font-size:15px;max-width:44em;opacity:.92}
+@media (max-width:640px){.steps li{grid-template-columns:1fr;gap:6px;background:linear-gradient(180deg, var(--ink-2), var(--red-deep) 60%, var(--red))}}
+
+/* contact */
+.contact{background:radial-gradient(70% 90% at 80% 100%, #ff3b14, var(--red) 40%, var(--red-deep) 80%);color:#fff}
+.contact .wrap{padding-block:90px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.contact h2{font-size:clamp(44px,7vw,92px)}
+.contact p{font-size:18px;max-width:28em;margin:18px 0 0}
+.lines{display:flex;flex-direction:column;gap:12px;min-width:0}
+.line{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);border-radius:14px;padding:16px 18px}
+.line div{display:flex;flex-direction:column;min-width:0}
+.line b{font-family:var(--display);font-weight:400;font-size:clamp(15px,1.8vw,20px);overflow-wrap:anywhere;user-select:all}
+.line button{flex:none;font:700 13px var(--body);background:var(--red);color:#fff;border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+.line button.done{background:#3DDC84;color:var(--ink)}
+@media (max-width:820px){.contact .wrap{grid-template-columns:1fr}}
+footer .wrap{padding-block:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>Merlin Dimana</a>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a class="pill" href="#contact">Collaborer avec moi</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="giant" aria-hidden="true">PORTFOLIO<span>.</span></div>
+
+    <div class="side l">
+      <span class="mono" style="color:#fff">Fondateur de MdlSoft</span>
+      <h2>Créateur de<b>solutions numériques</b></h2>
+      <div class="roles"><div>Applications<br>web</div><div>Logiciels<br>de gestion</div><div>Motion<br>design</div></div>
+    </div>
+
+    <figure class="photo" style="margin:0">
+      <img src="merlin-cutout.png" alt="Portrait de Merlin Dimana" width="900" height="1145">
+    </figure>
+
+    <div class="side r">
+      <div><div class="name-sm">MERLIN</div><div class="name-big">DIMANA</div></div>
+      <div class="stamp"><span><b>+4</b> applications</span><span><b>+11</b> réalisations</span></div>
+      <a class="pill" href="#realisations">Mon savoir-faire</a>
+    </div>
+
+    <span class="chip c1" aria-hidden="true"><b>R</b>React</span>
+    <span class="chip c2" aria-hidden="true"><b>D</b>Django</span>
+    <span class="chip c3" aria-hidden="true"><b>P</b>PHP</span>
+    <span class="chip c4" aria-hidden="true"><b>M</b>Motion</span>
+  </div>
+</header>
+
+<main>
+<section class="about" id="apropos">
+  <div class="wrap">
+    <div class="txt">
+      <span class="mono">C'est moi</span>
+      <h2>À propos de moi</h2>
+      <p>Je suis <strong>Merlin Dimana</strong>, fondateur de <strong>MdlSoft</strong> à Kinshasa. Je transforme les besoins des entreprises congolaises en outils numériques concrets : applications web, logiciels de gestion, pubs vidéo et produits digitaux.</p>
+      <p>Mes solutions sont pensées pour le terrain : <strong>paiement Mobile Money</strong>, comptes en <strong>USD et en CDF</strong>, utilisation sur téléphone et suivi en temps réel.</p>
+      <div class="mdl"><img src="mdlsoft-logo.jpg" alt="Logo MdlSoft" width="600" height="593"><span><b>MdlSoft</b>Solutions numériques · Kinshasa</span></div>
+    </div>
+    <div class="skills" aria-label="Niveau de maîtrise">
+      <span class="mono">Niveau de maîtrise</span>
+      <div class="skill"><span>Applications web</span><em>90 %</em><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><span>Logiciels de gestion (ERP)</span><em>85 %</em><div class="bar"><i style="width:85%"></i></div></div>
+      <div class="skill"><span>Maquettes UI / UX</span><em>80 %</em><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><span>Motion design &amp; pubs vidéo</span><em>75 %</em><div class="bar"><i style="width:75%"></i></div></div>
+      <div class="skill"><span>Produits numériques (ebooks)</span><em>80 %</em><div class="bar"><i style="width:80%"></i></div></div>
+    </div>
+    <div class="stats">
+      <div><b>+4</b><span class="mono">Applications</span></div>
+      <div><b>5</b><span class="mono">Vidéos</span></div>
+      <div><b>2</b><span class="mono">Livres publiés</span></div>
+      <div><b>4</b><span class="mono">Moyens Mobile Money</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="wrap">
+    <a class="pill" href="#contact">Je passe ma commande</a>
+    <h2>Je ne fais pas que du code.<span>Je crée des outils qui font tourner votre business.</span></h2>
+    <p>Chaque projet part de votre façon de travailler : vos clients, vos sites, vos paiements. L'outil s'adapte à vous, pas l'inverse.</p>
+  </div>
+</section>
+
+<section class="work" id="realisations">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="mono">Portfolio</span><h2 class="sec-title">Mes réalisations</h2></div>
+      <p>Des projets lancés et utilisés : logiciels, plateformes, pubs vidéo et livres.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrer les réalisations">
+      <button id="f-all" data-f="all" aria-pressed="true">Tout</button>
+      <button id="f-app" data-f="app" aria-pressed="false">Applications</button>
+      <button id="f-ui" data-f="ui" aria-pressed="false">UI / UX</button>
+      <button id="f-video" data-f="video" aria-pressed="false">Vidéo</button>
+      <button id="f-book" data-f="book" aria-pressed="false">Livres</button>
+    </div>
+
+    <div class="grid">
+      <article class="card wide" data-cat="app ui">
+        <div class="visual">
+          <div class="erp" aria-hidden="true">
+            <aside><i></i><i></i><i></i><i></i><i></i><i></i></aside>
+            <main>
+              <div class="kpi"><small>VENTES (USD)</small><b>2 480</b></div>
+              <div class="kpi"><small>VENTES (CDF)</small><b>1,9 M</b></div>
+              <div class="kpi"><small>SITES</small><b>6</b></div>
+              <div class="kpi"><small>STOCK BAS</small><b>4</b></div>
+              <div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i style="height:92%"></i><i style="height:74%"></i></div>
+            </main>
+          </div>
+        </div>
+        <div class="body">
+          <span class="mono">Logiciel de gestion · ERP</span>
+          <h3>DGT Manager · D.F.C Manager</h3>
+          <p>Logiciel de gestion multi-sites pour une chaîne de restaurants et trois autres activités (menuiserie aluminium, cyber café, immobilier). Caisse, cuisine, stock, trésorerie et rôles par utilisateur, en dollars et en francs congolais, avec export comptable SYSCOHADA.</p>
+          <div class="tags"><span>React</span><span>Django</span><span>Docker</span><span>Maquettes UI/UX</span><span>USD + CDF</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="app">
+        <div class="visual">
+          <div class="v-invite" aria-hidden="true">
+            <div class="inv"><small>VOUS ÊTES INVITÉ</small><b>Mariage<br>Grâce &amp; Jo</b><small>KINSHASA</small><span class="qr"></span></div>
+            <div class="guest">
+              <div>Famille Mbuyi <span class="ok">Confirmé</span></div>
+              <div>M. Kabasele <span class="ok">Confirmé</span></div>
+              <div>Mme Ngalula <span class="wait">En attente</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <span class="mono">Application web · Événementiel</span>
+          <h3>MDLEvent360</h3>
+          <p>Gestion des invitations pour mariages et événements en RDC : listes d'invités, invitations digitales avec QR code, suivi des confirmations.</p>
+          <a class="link" href="https://mdlevent360.com" target="_blank" rel="noopener">mdlevent360.com ↗</a>
+          <div class="tags"><span>PHP</span><span>Django + React</span><span>VPS</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="app">
+        <div class="visual">
+          <div class="ticket" aria-hidden="true">
+            <div class="l"><small>BILLET · ACCÈS GÉNÉRAL</small><b>Festival<br>Amani</b><small>N° 004812</small></div>
+            <div class="r"><i></i></div>
+          </div>
+          <div class="pay" aria-hidden="true"><span>M-Pesa</span><span>Orange Money</span><span>Airtel Money</span><span>Afrimoney</span></div>
+        </div>
+        <div class="body">
+          <span class="mono">Plateforme · Billetterie</span>
+          <h3>TicketbyMDL</h3>
+          <p>Billetterie en ligne à Kinshasa : achat de billets par Mobile Money, contrôle d'entrée par scan QR et tableau de bord pour les organisateurs.</p>
+          <a class="link" href="https://ticketbymdl.com" target="_blank" rel="noopener">ticketbymdl.com ↗</a>
+          <div class="tags"><span>Mobile Money</span><span>Scan QR</span><span>Dashboard</span></div>
+        </div>
+      </article>
+
+      <article class="card wide" data-cat="app">
+        <div class="visual">
+          <div class="fret" aria-hidden="true">
+            <div class="route"><div><b>USA</b><small>DÉPART</small></div><div class="path"></div><div style="text-align:right"><b>KIN</b><small>ARRIVÉE · RDC</small></div></div>
+            <div class="track-steps"><span class="on">Colis enregistré</span><span class="on">Expédié</span><span class="now">En transit</span><span>Arrivé à Kinshasa</span><span>Livré</span></div>
+          </div>
+        </div>
+        <div class="body">
+          <span class="mono">Application web · Logistique</span>
+          <h3>Djaffar Fret</h3>
+          <p>Site complet pour une société d'envoi de colis entre les États-Unis et la RDC, dans les deux sens : vitrine des services, suivi des colis en ligne pour les clients et espace de gestion interne pour les envois, les clients et les paiements.</p>
+          <a class="link" href="https://djaffarfret.gt.tc/index.php" target="_blank" rel="noopener">djaffarfret.gt.tc ↗</a>
+          <div class="tags"><span>PHP</span><span>Suivi de colis</span><span>Gestion interne</span><span>USA ⇄ RDC</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="video">
+        <div class="visual media land">
+          <video id="v-caprice-print" controls preload="none" playsinline poster="caprice-print.jpg"><source src="caprice-print.mp4" type="video/mp4"></video>
+        </div>
+        <div class="body">
+          <span class="mono">Pub vidéo · Imprimerie &amp; design</span>
+          <h3>Pub Caprice Print</h3>
+          <p>Publicité de 58 secondes pour Caprice Print, imprimerie et atelier de design : design graphique, personnalisation textile, objets publicitaires à votre logo, photo et vidéo.</p>
+          <div class="tags"><span>58 s</span><span>16:9</span><span>Motion design</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="video">
+        <div class="visual media port">
+          <video id="v-dream-print" controls preload="none" playsinline poster="dream-print.jpg"><source src="dream-print.mp4" type="video/mp4"></video>
+        </div>
+        <div class="body">
+          <span class="mono">Pub vidéo · Imprimerie</span>
+          <h3>Pub Dream Print</h3>
+          <p>Publicité verticale d'une minute pour Dream Print : impression de bâches publicitaires, tickets imprimés et billets numériques. Format pensé pour TikTok, Reels et Statuts WhatsApp.</p>
+          <div class="tags"><span>65 s</span><span>9:16</span><span>Réseaux sociaux</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="video">
+        <div class="visual media land">
+          <video id="v-ticketbymdl-organisateur" controls preload="none" playsinline poster="ticketbymdl-organisateur.jpg"><source src="ticketbymdl-organisateur.mp4" type="video/mp4"></video>
+        </div>
+        <div class="body">
+          <span class="mono">Tutoriel vidéo · TicketbyMDL</span>
+          <h3>Devenez organisateur</h3>
+          <p>Tutoriel de 48 secondes qui guide les organisateurs pas à pas : inscription, création de l'événement, configuration des billets, puis scan des QR codes le jour J.</p>
+          <div class="tags"><span>48 s</span><span>16:9</span><span>Tutoriel</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="video">
+        <div class="visual media port">
+          <video id="v-ticketbymdl-acheteur" controls preload="none" playsinline poster="ticketbymdl-acheteur.jpg"><source src="ticketbymdl-acheteur.mp4" type="video/mp4"></video>
+        </div>
+        <div class="body">
+          <span class="mono">Tutoriel vidéo · TicketbyMDL</span>
+          <h3>Acheter son billet</h3>
+          <p>Vidéo verticale de 30 secondes pour le public : trouver l'événement, choisir son billet, payer en francs congolais et recevoir son billet numérique avec QR code.</p>
+          <div class="tags"><span>30 s</span><span>9:16</span><span>Tutoriel</span></div>
+        </div>
+      </article>
+
+      <article class="card wide" data-cat="video">
+        <div class="visual">
+          <div class="vid" aria-hidden="true">
+            <div class="screen alt"></div>
+            <div class="tl"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="time"><span>00:00</span><span>01:20</span></div>
+          </div>
+        </div>
+        <div class="body">
+          <span class="mono">Motion design · 16:9</span>
+          <h3>Pub Cyber Café Djaffar</h3>
+          <p>Publicité d'environ 80 secondes pour un cyber café de Kinshasa qui accompagne les candidatures à la DV Lottery.</p>
+          <div class="tags"><span>~80 s</span><span>Motion design</span><span>Client local</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="book">
+        <div class="visual">
+          <div class="book b1" aria-hidden="true"><small>MDLDIMANA</small><span class="paw">🦁</span><b>Le monde merveilleux des animaux</b></div>
+        </div>
+        <div class="body">
+          <span class="mono">Édition · Amazon KDP</span>
+          <h3>Le monde merveilleux des animaux</h3>
+          <p>Livre de coloriage de 20 dessins pour les enfants de 3 à 8 ans, en broché sur Amazon et en PDF.</p>
+          <div class="tags"><span>Amazon KDP</span><span>3–8 ans</span><span>20 dessins</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="book">
+        <div class="visual">
+          <div class="book b2" aria-hidden="true"><small>MDLDIMANA</small><b>30 recettes africaines saines</b><small>EBOOK</small></div>
+        </div>
+        <div class="body">
+          <span class="mono">Édition · Ebook</span>
+          <h3>30 recettes africaines saines</h3>
+          <p>Ebook de cuisine africaine équilibrée, vendu en produit numérique sur la boutique Chariow.</p>
+          <div class="tags"><span>Ebook</span><span>Chariow</span><span>Produit digital</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="intro">
+      <span class="mono">Comment je travaille</span>
+      <h2 class="sec-title">Mon process</h2>
+      <p>Vous validez chaque étape. Rien ne part en ligne sans votre accord.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><div class="t"><span>PRÉSENTATION</span><p>Nous définissons ensemble votre besoin, vos utilisateurs et vos règles de travail.</p></div></li>
+      <li><span class="n">02</span><div class="t"><span>MAQUETTE CLIQUABLE</span><p>Vous testez les écrans comme une vraie application, avant tout développement.</p></div></li>
+      <li><span class="n">03</span><div class="t"><span>VALIDATION</span><p>On ajuste jusqu'à ce que l'outil corresponde exactement à votre façon de travailler.</p></div></li>
+      <li><span class="n">04</span><div class="t"><span>DÉVELOPPEMENT</span><p>Une page à la fois, chaque page validée avant de passer à la suivante.</p></div></li>
+      <li><span class="n">05</span><div class="t"><span>MISE EN LIGNE</span><p>Déploiement sur serveur, formation de votre équipe, puis suivi et évolutions.</p></div></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="mono" style="color:#fff">Collaborer avec moi</span>
+      <h2>Un projet en tête ?</h2>
+      <p>Application, logiciel de gestion, pub vidéo : écrivez-moi ou appelez-moi, je réponds rapidement.</p>
+    </div>
+    <div class="lines">
+      <div class="line"><div><span class="mono">E-mail</span><b id="mail">dimanamerlin@gmail.com</b></div><button id="c-mail" data-copy="mail">Copier</button></div>
+      <div class="line"><div><span class="mono">Téléphone · WhatsApp</span><b id="tel">082 901 8462</b></div><button id="c-tel" data-copy="tel">Copier</button></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span class="flogo"><img src="mdlsoft-logo.jpg" alt="" width="30" height="30"><span class="mono">© 2026 Merlin Dimana · MdlSoft</span></span><span class="mono">Kinshasa, RDC</span></div>
+</footer>
+
+<script>
+document.querySelectorAll('.filters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const f=b.dataset.f;
+    document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed', x===b));
+    document.querySelectorAll('.card').forEach(c=>{ c.hidden = f!=='all' && !c.dataset.cat.split(' ').includes(f); });
+  });
+});
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const el=document.getElementById(btn.dataset.copy);
+    const done=()=>{btn.textContent='Copié';btn.classList.add('done');setTimeout(()=>{btn.textContent='Copier';btn.classList.remove('done')},1800)};
+    const select=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);};
+    try{ navigator.clipboard.writeText(el.textContent).then(done,select); }catch(e){ select(); }
+  });
+});
+</script>
+
+</body>
+</html>
